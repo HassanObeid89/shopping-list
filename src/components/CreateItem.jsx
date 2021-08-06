@@ -1,18 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react'
 
-const getDataFromLS = () => {
-    const data = localStorage.getItem('items');
-    if(data){
-        return JSON.parse(data)
-    }
-    else{
-        return []
-    }
-}
 
-function CreateItem() {
 
-    const [items, setItems] = useState(getDataFromLS())
+function CreateItem({setItems, items}) {
 
     const [itemName, setItemName] = useState('')
     const [itemPrice, setItemPrice] = useState('')
@@ -27,10 +17,6 @@ function CreateItem() {
         setItemName('');
         setItemPrice('');
     }
-
-    useEffect(() => {
-        localStorage.setItem('items',JSON.stringify(items))
-    }, [items])
 
     return (
         <>
