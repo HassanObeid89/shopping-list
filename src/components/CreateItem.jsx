@@ -37,7 +37,7 @@ function CreateItem() {
         <form onSubmit={handleSubmit}>
             <input required type='text' placeholder='Item name' onChange={(e)=>setItemName(e.target.value)} value={itemName} />
             <input required type='number' min='1' step='0.01' placeholder='Price' onChange={(e)=>setItemPrice(e.target.value)} value={itemPrice} />
-            <button>Submit</button>
+            <button>Add item</button>
         </form>
             
            
