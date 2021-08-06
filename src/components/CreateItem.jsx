@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import ShoppingListCard from './ShoppingListCard'
 
 
 function CreateItem({setItems, items}) {
@@ -25,7 +25,17 @@ function CreateItem({setItems, items}) {
             <input required type='number' min='1' step='0.01' placeholder='Price' onChange={(e)=>setItemPrice(e.target.value)} value={itemPrice} />
             <button>Add item</button>
         </form>
-            
+        <table >
+            <thead>
+                <tr>
+                    <th>Item name</th>
+                    <th>Item price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ShoppingListCard items={items}/>
+            </tbody>
+        </table>
            
         </>
     )
