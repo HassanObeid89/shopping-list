@@ -17,6 +17,8 @@ const getDataFromLS = () => {
 function App() {
   
   const [items, setItems] = useState(getDataFromLS())
+  const [show, setShow] = useState(false)
+
 
     useEffect(() => {
         localStorage.setItem('items',JSON.stringify(items))
@@ -25,8 +27,8 @@ function App() {
   return (
     <div className="App">
       <Header />
-
-      {items.length > 0 ? <CreateItem setItems={setItems} items={items} /> : <WelcomeScreen />}
+      
+      <WelcomeScreen setItems={setItems} items={items} setShow={setShow} show={show}/>
       
     </div>
   );

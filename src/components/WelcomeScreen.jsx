@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CreateItem from './CreateItem';
+import ShoppingListCard from './ShoppingListCard'
+
+function WelcomeScreen({setItems, items, setShow,show}) {
 
 
-function WelcomeScreen() {
+    const [itemName, setItemName] = useState('')
+    const [itemPrice, setItemPrice] = useState('')
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let item = {
+            itemName,
+            itemPrice
+        }
+        setItems([...items,item]);
+        setItemName('');
+        setItemPrice('');
+    }
+
+    const handleClick = () => {
+    setShow(!show)
+  }
+  
     return (
         <>
+        {show === false && items.length === 0 ? 
+        <div>
             <h1>Welcome</h1>
             <h2>Shopping list</h2>
             <p>Your shopping list is empty right now</p>
@@ -13,8 +36,20 @@ function WelcomeScreen() {
                 Hit Add item.
                 if the task is done Hit the checkbox. 
             </span>
-            
-            <button>Add item</button>
+            <button onClick={handleClick}>Add item</button>
+            </div>
+            : null}
+        
+            {show || items.length > 0 ? 
+            <div>
+                <CreateItem handleSubmit={handleSubmit} setItemName={setItemName} itemName={itemName} setItemPrice={setItemPrice} itemPrice={itemPrice}  />
+                <ul>
+                    <ShoppingListCard items={items}/>
+                </ul>
+                
+                
+            </div>
+        : null}
         </>
     )
 }
