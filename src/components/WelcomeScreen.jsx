@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CreateItem from './CreateItem';
-import ShoppingListCard from './ShoppingListCard'
+import AcquiredList from './AcquiredList'
+import uuid from 'react-uuid'
 
 function WelcomeScreen({setItems, items, setShow,show}) {
 
@@ -8,11 +9,15 @@ function WelcomeScreen({setItems, items, setShow,show}) {
     const [itemName, setItemName] = useState('')
     const [itemPrice, setItemPrice] = useState('')
     
+    
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         let item = {
+            id : uuid() ,
             itemName,
-            itemPrice
+            itemPrice,
+            completed : false
         }
         setItems([...items,item]);
         setItemName('');
@@ -22,6 +27,8 @@ function WelcomeScreen({setItems, items, setShow,show}) {
     const handleClick = () => {
     setShow(!show)
   }
+
+  
   
     return (
         <>
@@ -44,7 +51,11 @@ function WelcomeScreen({setItems, items, setShow,show}) {
             <div>
                 <CreateItem handleSubmit={handleSubmit} setItemName={setItemName} itemName={itemName} setItemPrice={setItemPrice} itemPrice={itemPrice}  />
                 <ul>
-                    <ShoppingListCard items={items}/>
+                    {items.map((item) => (
+                        <AcquiredList setItems={setItems} items={items} item={item} key={item.id}/>
+                    ))}
+                    
+                    
                 </ul>
                 
                 
