@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import ShoppingListCard from './ShoppingListCard'
+import React from 'react'
+
 
 
 function CreateItem({ handleSubmit,setItemName, itemName, setItemPrice, itemPrice }) {
