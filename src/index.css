@@ -1,13 +1,31 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
+  .btn {
+    @apply   items-center m-2 py-2 px-4 rounded-lg shadow-md;
+  }
+  .btn-blue {
+    @apply    mx-32 text-darkYellow m-2 font-extrabold  bg-blue-dark hover:bg-blue-light hover:text-white;
+  }
+
+  .input {
+    @apply  mx-10 inline-block py-2 px-5 m-2 rounded-lg border-2;
+  }
+
+  .listContainer {
+    @apply flex justify-center mt-10 ;
+  }
+
+  .shoppingList {
+    @apply  max-w-sm md:max-w-lg text-white flex py-2 px-5 items-center mx-2  md:text-left space-x-6 md:space-x-20 tracking-widest;
+  }
+
+  .title {
+    @apply flex justify-center mt-8 uppercase tracking-widest text-large font-bold;
+  }
+
+  .ulStyle {
+    @apply bg-blue-light rounded-lg py-2 w-full mx-10 md:max-w-lg  ;
+  }
