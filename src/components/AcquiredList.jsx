@@ -1,51 +1,34 @@
-import React from 'react'
-import CompletedList from './CompletedList';
+import React from "react";
 
-function AcquiredList({item, setItems, items}) {
-
-    
-    const checkBoxHandler = () => {
-
-      setItems(items.map((completedItem) => {
-          if(completedItem.id === item.id) {
-              return {
-                  ...item, completed : !item.completed
-              }
-          }
-          return completedItem
-      }) 
-
-      );
-      
-  }
-    return (
-        <div>
-            
-            {item.completed === false ?
-            
-            <li key={item.id} >
-                
-                <p>
-                    {item.itemName}
-                </p>
-                <p>
-                    {item.itemPrice}
-                </p>
-            <input type='checkbox' onClick={checkBoxHandler} />
-            <button>
-                delete
-            </button>
-            
-            </li>
-            : 
-            
-        null
-         
-        
+function AcquiredList({ item, setItems, items }) {
+  const checkBoxHandler = () => {
+    setItems(
+      items.map((completedItem) => {
+        if (completedItem.id === item.id) {
+          return {
+            ...item,
+            completed: !item.completed,
+          };
         }
-        
-        </div>
-    ) 
+        return completedItem;
+      })
+    );
+  };
+  return (
+    <>
+      {item.completed === false ? (
+        <li key={item.id} className='shoppingList'>
+          <input className='' type='checkbox' onClick={checkBoxHandler} />
+          <span className='md:flex-1 text-left '>
+            {item.itemName}
+          </span>
+          <span className='md:flex-1 text-left '>
+            {item.itemPrice} kr
+          </span>
+        </li>
+      ) : null}
+    </>
+  );
 }
 
-export default AcquiredList
+export default AcquiredList;

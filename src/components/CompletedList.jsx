@@ -1,26 +1,23 @@
-import React from 'react'
+import React from "react";
 
 function CompletedList({ item }) {
-    return (
+  return (
+    <>
+      {item.completed === true ? (
         <>
-        
-        <div>
-            
-            <li key={item.id} >
-                <p>
-                    {item.itemName}
-                </p>
-                <p>
-                    {item.itemPrice}
-                </p>
-                <input type='checkbox' checked />
-            <button>
-                delete
-            </button>
-                </li>
-        </div>
+          <li key={item.id} className='shoppingList'>
+            <input type='checkbox' checked />
+            <p className='md:flex-1 line-through text-left'>
+              {item.itemName}
+            </p>
+            <p className='md:flex-1 line-through text-left'>
+              {item.itemPrice} kr
+            </p>
+          </li>
         </>
-    )
+      ) : null}
+    </>
+  );
 }
 
-export default CompletedList
+export default CompletedList;
