@@ -4,13 +4,13 @@ import AcquiredList from "./AcquiredList";
 import uuid from "react-uuid";
 import clipart from "../assets/clipart.png";
 
-
 function WelcomeScreen({ setItems, items, setShow, show }) {
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState(Number);
   const [sortByName, setSortByName] = useState([]);
-  
-  const handleSortByName = (() => {
+  const [sortByPrice, setSortByPrice] = useState([]);
+
+  const handleSortByName = () => {
     const sortedByName = items.sort((a, b) => {
       if (a.itemName.toLowerCase() < b.itemName.toLowerCase()) {
         return -1;
@@ -19,14 +19,19 @@ function WelcomeScreen({ setItems, items, setShow, show }) {
       } else {
         return 0;
       }
-      
     });
-      setSortByName(sortedByName);
-      setSortByName([]);
-  })
+    setSortByName(sortedByName);
+    setSortByName([]);
+  };
 
-  
-  
+  const handleSortByPrice = () => {
+    const sortedByPrice = items.sort((a, b) => {
+      return a.itemPrice - b.itemPrice;
+    });
+    setSortByPrice(sortedByPrice);
+    setSortByPrice([]);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -79,9 +84,14 @@ function WelcomeScreen({ setItems, items, setShow, show }) {
               items={items}
             />
           </div>
-          <button className={"btn btnblue"} onClick={handleSortByName}>
+          <div className='flex justify-center mt-8'>
+            <button className={"btn "} onClick={handleSortByName}>
             Sort by name
           </button>
+          <button className={"btn "} onClick={handleSortByPrice}>
+            Sort by price
+          </button>
+          </div>
           
           <div className='listContainer'>
             <ul className='ulStyle'>
