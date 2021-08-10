@@ -1,6 +1,6 @@
 import React from "react";
 
-function AcquiredList({ item, setItems, items }) {
+function AcquiredList({ item, setItems, items,sort }) {
   const checkBoxHandler = () => {
     setItems(
       items.map((completedItem) => {
@@ -14,8 +14,10 @@ function AcquiredList({ item, setItems, items }) {
       })
     );
   };
+
   return (
     <>
+      
       {item.completed === false ? (
         <li key={item.id} className='shoppingList'>
           <input className='' type='checkbox' onClick={checkBoxHandler} />
