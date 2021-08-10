@@ -1,12 +1,22 @@
 import React from "react";
 
+  
 function CreateItem({
   handleSubmit,
   setItemName,
   itemName,
   setItemPrice,
   itemPrice,
-}) {
+  items,
+})
+
+
+
+
+
+{
+
+  
   return (
     <>
       <form
@@ -32,6 +42,7 @@ function CreateItem({
         />
         <button className='btn btn-blue'>Add item</button>
       </form>
+      
     </>
   );
 }

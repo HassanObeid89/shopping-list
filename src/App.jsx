@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
-  console.log(items);
+  
   return (
     <div className=''>
       <Header />

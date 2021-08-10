@@ -7,8 +7,26 @@ import clipart from "../assets/clipart.png";
 
 function WelcomeScreen({ setItems, items, setShow, show }) {
   const [itemName, setItemName] = useState("");
-  const [itemPrice, setItemPrice] = useState("");
+  const [itemPrice, setItemPrice] = useState(Number);
+  const [sortByName, setSortByName] = useState([]);
+  
+  const handleSortByName = (() => {
+    const sortedByName = items.sort((a, b) => {
+      if (a.itemName.toLowerCase() < b.itemName.toLowerCase()) {
+        return -1;
+      } else if (a.itemName.toLowerCase() > b.itemName.toLowerCase()) {
+        return 1;
+      } else {
+        return 0;
+      }
+      
+    });
+      setSortByName(sortedByName);
+      setSortByName([]);
+  })
 
+  
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -58,8 +76,13 @@ function WelcomeScreen({ setItems, items, setShow, show }) {
               itemName={itemName}
               setItemPrice={setItemPrice}
               itemPrice={itemPrice}
+              items={items}
             />
           </div>
+          <button className={"btn btnblue"} onClick={handleSortByName}>
+            Sort by name
+          </button>
+          
           <div className='listContainer'>
             <ul className='ulStyle'>
               {items.map((item) => (
