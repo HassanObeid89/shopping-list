@@ -15,7 +15,7 @@
   }
 
   .listContainer {
-    @apply flex justify-center mt-10 ;
+    @apply flex justify-center mt-2 ;
   }
 
   .shoppingList {
