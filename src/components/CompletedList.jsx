@@ -8,10 +8,10 @@ function CompletedList({ item }) {
           <li key={item.id} className='shoppingList'>
             <input type='checkbox' checked />
             <p className='md:flex-1 line-through text-left'>
-              {item.itemName}
+              {item.Name}
             </p>
             <p className='md:flex-1 line-through text-left'>
-              {item.itemPrice} kr
+              {item.Price} kr
             </p>
           </li>
         </>

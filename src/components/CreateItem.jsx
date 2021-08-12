@@ -1,48 +1,60 @@
-import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "../validations/FormValidation";
+import uuid from "react-uuid";
 
+
+function CreateItem({ setItems, items }) {
   
-function CreateItem({
-  handleSubmit,
-  setItemName,
-  itemName,
-  setItemPrice,
-  itemPrice,
-  items,
-})
+  const submitForm = (data, e) => {
+    e.preventDefault();
+    data.id = uuid();
+    data.completed = false;
 
+    setItems([...items, data]);
+    reset('')
+  };
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
 
+  });
 
-
-{
-
-  
   return (
     <>
       <form
         className='flex flex-col md:flex-row justify-center md:space-x-4 mt-8'
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit(submitForm)}>
         <input
           className='input'
-          required
+          name='Name'
           type='text'
           placeholder='Item name'
-          onChange={(e) => setItemName(e.target.value)}
-          value={itemName}
+          autoComplete='off'
+          {...register("Name", {
+            required: "Required",
+          })}
         />
+        {errors.Name?.type === "required" && <p>Required field</p>}
+
         <input
           className='input'
-          required
-          type='number'
-          min='1'
-          step='0.01'
+          name='Price'
+          type='text'
           placeholder='Price'
-          onChange={(e) => setItemPrice(e.target.value)}
-          value={itemPrice}
+          autoComplete='off'
+          {...register("Price")}
         />
+        {errors.Price?.type === "typeError" && <p>Price should be a number</p>}
+        {errors.Price?.type === "min" && <p>Price can't be negative</p>}
+        {errors.Price?.type === "required" && <p>Required field</p>}
         <button className='btn btn-blue'>Add item</button>
       </form>
-      
     </>
   );
 }

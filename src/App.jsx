@@ -4,8 +4,9 @@ import CompletedList from "./components/CompletedList";
 import Header from "./components/Header";
 import WelcomeScreen from "./components/WelcomeScreen";
 
-const getDataFromLS = () => {
+const getDataLS = () => {
   const data = localStorage.getItem("items");
+  console.log(data);
   if (data) {
     return JSON.parse(data);
   } else {
@@ -14,13 +15,13 @@ const getDataFromLS = () => {
 };
 
 function App() {
-  const [items, setItems] = useState(getDataFromLS());
   const [show, setShow] = useState(false);
+  const [items, setItems] = useState(getDataLS());
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
-  
+
   return (
     <div className=''>
       <Header />

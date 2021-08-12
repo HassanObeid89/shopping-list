@@ -22,10 +22,10 @@ function AcquiredList({ item, setItems, items,sort }) {
         <li key={item.id} className='shoppingList'>
           <input className='' type='checkbox' onClick={checkBoxHandler} />
           <span className='md:flex-1 text-left '>
-            {item.itemName}
+            {item.Name}
           </span>
           <span className='md:flex-1 text-left '>
-            {item.itemPrice} kr
+            {item.Price} kr
           </span>
         </li>
       ) : null}
