@@ -1,49 +1,33 @@
 import React, { useState } from "react";
+
 import CreateItem from "./CreateItem";
 import AcquiredList from "./AcquiredList";
-import uuid from "react-uuid";
 import clipart from "../assets/clipart.png";
 
-function WelcomeScreen({ setItems, items, setShow, show }) {
-  const [itemName, setItemName] = useState("");
-  const [itemPrice, setItemPrice] = useState(Number);
-  const [sortByName, setSortByName] = useState([]);
-  const [sortByPrice, setSortByPrice] = useState([]);
+function WelcomeScreen({ items, setShow, show, submitForm, setItems, item }) {
+  const [sortByName, setSortByName] = useState(false);
+  const [sortByPrice, setSortByPrice] = useState(false);
 
   const handleSortByName = () => {
-    const sortedByName = items.sort((a, b) => {
-      if (a.itemName.toLowerCase() < b.itemName.toLowerCase()) {
+    items.sort((a, b) => {
+      if (a.Name.toLowerCase() < b.Name.toLowerCase()) {
         return -1;
-      } else if (a.itemName.toLowerCase() > b.itemName.toLowerCase()) {
+      } else if (a.Name.toLowerCase() > b.Name.toLowerCase()) {
         return 1;
       } else {
         return 0;
       }
     });
-    setSortByName(sortedByName);
-    setSortByName([]);
+    setSortByName(!sortByName);
+    //setSortByName(false);
   };
 
   const handleSortByPrice = () => {
-    const sortedByPrice = items.sort((a, b) => {
-      return a.itemPrice - b.itemPrice;
+    setSortByPrice(!sortByPrice);
+
+    items.sort((a, b) => {
+      return a.Price - b.Price;
     });
-    setSortByPrice(sortedByPrice);
-    setSortByPrice([]);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    let item = {
-      id: uuid(),
-      itemName,
-      itemPrice,
-      completed: false,
-    };
-    setItems([...items, item]);
-    setItemName("");
-    setItemPrice("");
   };
 
   const handleClick = () => {
@@ -76,23 +60,20 @@ function WelcomeScreen({ setItems, items, setShow, show }) {
         <>
           <div>
             <CreateItem
-              handleSubmit={handleSubmit}
-              setItemName={setItemName}
-              itemName={itemName}
-              setItemPrice={setItemPrice}
-              itemPrice={itemPrice}
+              submitForm={submitForm}
               items={items}
+              setItems={setItems}
             />
           </div>
           <div className='flex justify-center mt-8'>
             <button className={"btn "} onClick={handleSortByName}>
-            Sort by name
-          </button>
-          <button className={"btn "} onClick={handleSortByPrice}>
-            Sort by price
-          </button>
+              Sort by name
+            </button>
+            <button className={"btn "} onClick={handleSortByPrice}>
+              Sort by price
+            </button>
           </div>
-          
+
           <div className='listContainer'>
             <ul className='ulStyle'>
               {items.map((item) => (
