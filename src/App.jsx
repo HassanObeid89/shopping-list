@@ -28,6 +28,7 @@ function App() {
     <>
       <Header />
       <img src={clipart} alt='' className='mx-auto h-20 w-auto ' />
+      <h1 className='title'>Shopping List</h1>
       {items.length === 0 && show !== true ? (
         <WelcomeScreen
           setItems={setItems}
