@@ -7,7 +7,7 @@ function WelcomeScreen({ setShow, show }) {
 
   return (
     <>
-      <h1 className='title'>Shopping List</h1>
+      
       <div>
         <div className='mx-auto py-8 px-6 shadow-xl rounded-lg  w-2/5 text-small'>
           <p>Welcome!</p>
