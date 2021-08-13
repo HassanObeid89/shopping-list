@@ -19,7 +19,7 @@
   }
 
   .shoppingList {
-    @apply  max-w-sm md:max-w-lg text-white flex py-2 px-5 items-center mx-2  md:text-left space-x-6 md:space-x-20 tracking-widest;
+    @apply  max-w-sm md:max-w-lg  flex py-2 px-5 items-center mx-2  md:text-left space-x-6 md:space-x-20 tracking-widest;
   }
 
   .title {
@@ -27,5 +27,5 @@
   }
 
   .ulStyle {
-    @apply bg-blue-light rounded-lg py-2 w-full mx-10 md:max-w-lg  ;
+    @apply py-2 w-full mx-10 md:max-w-lg  ;
   }
