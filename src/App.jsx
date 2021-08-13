@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import CompletedList from "./components/CompletedList";
+import CreateItem from "./components/CreateItem";
 import Header from "./components/Header";
 import WelcomeScreen from "./components/WelcomeScreen";
+
+import clipart from "./assets/clipart.png";
 
 const getDataLS = () => {
   const data = localStorage.getItem("items");
@@ -23,23 +25,20 @@ function App() {
   }, [items]);
 
   return (
-    <div className=''>
+    <>
       <Header />
-
-      <WelcomeScreen
-        setItems={setItems}
-        items={items}
-        setShow={setShow}
-        show={show}
-      />
-      <div className='listContainer'>
-        <ul className='ulStyle'>
-          {items.map((item) => (
-            <CompletedList item={item} key={item.id} />
-          ))}
-        </ul>
-      </div>
-    </div>
+      <img src={clipart} alt='' className='mx-auto h-20 w-auto ' />
+      {items.length === 0 && show !== true ? (
+        <WelcomeScreen
+          setItems={setItems}
+          items={items}
+          setShow={setShow}
+          show={show}
+        />
+      ) : (
+        <CreateItem setItems={setItems} items={items} />
+      )}
+    </>
   );
 }
 
