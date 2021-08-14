@@ -22,26 +22,11 @@ function AcquiredList({ aquiredItems, setItems, items }) {
       ) : (
         <div className=' flex justify-center'>
           <span className='ulStyle flex justify-center mt-6 text-gray-700 bg-blue-light rounded-lg text-white '>
-            No completed items yet!
+            No Aquired items yet! Add your first item.
           </span>
         </div>
       )}
     </>
-
-    //   {item.completed === false ? (
-    //     <>
-    //     <li key={item.id} className='shoppingList'>
-    //       <input className='' type='checkbox' onClick={checkBoxHandler} />
-    //       <span className='md:flex-1 text-left '>
-    //         {item.Name}
-    //       </span>
-    //       <span className='md:flex-1 text-left '>
-    //         {item.Price} kr
-    //       </span>
-    //     </li>
-    //     </>
-    //   ) : null}
-    // </>
   );
 }
 
