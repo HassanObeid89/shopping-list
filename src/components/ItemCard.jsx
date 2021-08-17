@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AquiredItemCard({item, setItems, items}) {
+function ItemCard({item, setItems, items}) {
 
     const checkBoxHandler = () => {
       setItems(
@@ -35,4 +35,4 @@ function AquiredItemCard({item, setItems, items}) {
     );
 }
 
-export default AquiredItemCard
+export default ItemCard;

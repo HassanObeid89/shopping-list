@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../validations/FormValidation";
 import uuid from "react-uuid";
 import CompletedList from "./CompletedList";
-import AcquiredList from "./AcquiredList";
+import ItemList from "./ItemList";
 
 function CreateItem({ setItems, items }) {
   const [sortByName, setSortByName] = useState(false);
@@ -14,8 +14,8 @@ function CreateItem({ setItems, items }) {
     (completedItems) => completedItems.completed === true
   );
 
-  const aquiredItems = items.filter(
-    (aquiredItems) => aquiredItems.completed === false
+  const uncompletedItems = items.filter(
+    (uncompletedItems) => uncompletedItems.completed === false
   );
 
   const handleSortByName = () => {
@@ -108,8 +108,8 @@ function CreateItem({ setItems, items }) {
         </button>
       </div>
 
-      <AcquiredList
-        aquiredItems={aquiredItems}
+      <ItemList
+        uncompletedItems={uncompletedItems}
         setItems={setItems}
         items={items}
       />

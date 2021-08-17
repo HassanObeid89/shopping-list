@@ -1,16 +1,16 @@
 import React from "react";
 
-import AquiredItemCard from "./AquiredItemCard";
+import ItemCard from "./ItemCard";
 
-function AcquiredList({ aquiredItems, setItems, items }) {
+function ItemList({ uncompletedItems, setItems, items }) {
   return (
     <>
-      <h1 className='flex justify-center font-bold mt-10'>Aquired Items</h1>
-      {aquiredItems.length > 0 ? (
+      <h1 className='flex justify-center font-bold mt-10'>Active Items</h1>
+      {uncompletedItems.length > 0 ? (
         <div className='listContainer'>
           <ul className='ulStyle bg-blue-light rounded-lg text-white'>
             {items.map((item) => (
-              <AquiredItemCard
+              <ItemCard
                 item={item}
                 key={item.id}
                 items={items}
@@ -22,7 +22,7 @@ function AcquiredList({ aquiredItems, setItems, items }) {
       ) : (
         <div className=' flex justify-center'>
           <span className='ulStyle flex justify-center mt-6 text-gray-700 bg-blue-light rounded-lg text-white '>
-            No Aquired items yet! Add your first item.
+            No items yet! Add your first item.
           </span>
         </div>
       )}
@@ -30,4 +30,4 @@ function AcquiredList({ aquiredItems, setItems, items }) {
   );
 }
 
-export default AcquiredList;
+export default ItemList;
