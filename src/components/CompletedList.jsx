@@ -8,6 +8,7 @@ function CompletedList({ completedItems }) {
       {completedItems.length > 0 ? (
         <div className='listContainer'>
           <ul className='ulStyle bg-blue-light rounded-lg text-white'>
+            {/* Put the map as a component as show in the example above */}
             {completedItems.map((item) => (
               <CompletedItemCard item={item} key={item.id} />
             ))}

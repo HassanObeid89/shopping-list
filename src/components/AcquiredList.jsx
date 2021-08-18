@@ -3,6 +3,7 @@ import React from "react";
 import AquiredItemCard from "./AquiredItemCard";
 
 function AcquiredList({ aquiredItems, setItems, items }) {
+  // dont abuse the <> think about a semantic html tag
   return (
     <>
       <h1 className='flex justify-center font-bold mt-10'>Aquired Items</h1>

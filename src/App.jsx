@@ -6,9 +6,14 @@ import WelcomeScreen from "./components/WelcomeScreen";
 
 import clipart from "./assets/clipart.png";
 
+// dont use acronyms for key pieces of data load loadFromLocalStorage while longer is easier to understand
 const getDataLS = () => {
   const data = localStorage.getItem("items");
+
+  // no logs in the final branch
   console.log(data);
+
+  // can be made a single line with a ternary operator
   if (data) {
     return JSON.parse(data);
   } else {
@@ -24,11 +29,14 @@ function App() {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
 
+  // While tecnically not wrong, leave the div with className App as a React convention
   return (
     <>
       <Header />
       <img src={clipart} alt='' className='mx-auto h-20 w-auto ' />
       <h1 className='title'>Shopping List</h1>
+
+      {/* If there is a "welcome screen" where is his counterpart "something screen" it feels weird to go from a welcome screen to create item */}
       {items.length === 0 && show !== true ? (
         <WelcomeScreen
           setItems={setItems}
@@ -37,6 +45,7 @@ function App() {
           show={show}
         />
       ) : (
+        // Should be called Normal or ListScreen
         <CreateItem setItems={setItems} items={items} />
       )}
     </>
