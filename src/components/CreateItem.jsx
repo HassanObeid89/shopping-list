@@ -18,7 +18,12 @@ function CreateItem({ setItems, items }) {
     (aquiredItems) => aquiredItems.completed === false
   );
 
-  // Sort should be in a separate component
+  /**
+   * Sort should be in a separate component -1
+   * if the entire codebase would fit in 50 or less lines of code it would be ok,
+   * but a 100+ lines of code project gives a clear signal that
+   * we need to stop the project and not continue until it is refactored.
+   */
   const handleSortByName = () => {
     items.sort((a, b) => {
       if (a.Name.toLowerCase() < b.Name.toLowerCase()) {
@@ -32,6 +37,7 @@ function CreateItem({ setItems, items }) {
     setSortByName(!sortByName);
   };
 
+  // same here
   const handleSortByPrice = () => {
     setSortByPrice(!sortByPrice);
 
@@ -109,7 +115,7 @@ function CreateItem({ setItems, items }) {
         </button>
       </div>
 
-      {/* There is no reason to use 2 components sharing 99% of the same code */}
+      {/* There is no reason to use 2 components sharing 99% of the same code -1 */}
       {/* Even worst creating sub compoinents AcquiredItemCard and CompletedItemCard for this. */}
       <AcquiredList
         aquiredItems={aquiredItems}
