@@ -12,7 +12,7 @@ Click the checkbox to mark the item as completed.
 You can also sort the list by name or size.
 
 
-Check the app on this link https://todo-app-4761c.web.app/
+Check the app on this link https://shopping-list-4265b.web.app/
 
 
 
